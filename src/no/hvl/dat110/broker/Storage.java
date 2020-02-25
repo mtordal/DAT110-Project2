@@ -11,7 +11,7 @@ import no.hvl.dat110.messagetransport.Connection;
 public class Storage {
 
 	// data structure for managing subscriptions
-	// maps from user to set of topics subscribed to by user
+	// maps from a topic to set of subscribed users
 	protected ConcurrentHashMap<String, Set<String>> subscriptions;
 	
 	// data structure for managing currently connected clients
