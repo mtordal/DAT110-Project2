@@ -236,7 +236,7 @@ The principle of the sensor-display application is shown below
 
 #### Sensor device implementation
 
-The skeleton of the sensor device implementation can be found in the `SensorDevice.java` class. You are required to
+The skeleton of the sensor device implementation can be found in the `TemperatureDevice.java` class. You are required to
 complete the implementation such that the sensor device connects to a broker, runs in a loop `COUNT`-times where it publishes to a *temperature* topic. After that the sensor device should disconnect from the broker.
 
 #### Display device implementation
