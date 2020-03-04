@@ -327,9 +327,15 @@ https://github.com/selabhvl/dat110-project2-chapp.git
 
 If using Java 11 SDK (or later), then you will have to download JavaFX for your platform and then configure the project. For Java 8/9/10 JavaFX is included as part of JDK.
 
-1. Download the 11.0.2 distribution from https://gluonhq.com/products/javafx/ (remember to download for the correct platform - Mac/Linux/Windows)
+Follow the instruction here to setup JavaFX in Eclipse.
 
-2. Follow the instructions for JavaFX and Eclipse and non-modular projects: https://openjfx.io/openjfx-docs/#install-javafx (except that you do not need to create a new project as you already have the dat110-project2-chapp project). The main class for the launch configuration is `no.hvl.dat110.chapp.Chapp`
+https://github.com/selabhvl/dat110public-2020/blob/master/javafx/INSTALL.md
+
+For other IDEs see
+
+- https://gluonhq.com/products/javafx/  
+
+- https://openjfx.io/openjfx-docs/#install-javafx
 
 3. In order to compile the chatapp client you *may* in addition have to add the Eclipse project containing your implementation of the PB-MOM middleware to the Build Path of the project for the chat application GUI client.
 
