@@ -1,5 +1,6 @@
 package no.hvl.dat110.broker;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.Collection;
 
@@ -93,6 +94,14 @@ public class Dispatcher extends Stopable {
 
 		storage.addClientSession(user, connection);
 
+		// task E, send buffered messages if reconnect
+		if (storage.buffer.containsKey(user)) {
+			for (Message m : storage.getMessages(user)) {
+				storage.getSession(user).send(m);
+			}
+
+			storage.buffer.remove(user);
+		}
 	}
 
 	// called by dispatch upon receiving a disconnect message
@@ -113,8 +122,8 @@ public class Dispatcher extends Stopable {
 		// TODO: create the topic in the broker storage
 		// the topic is contained in the create topic message
 
-		throw new UnsupportedOperationException(TODO.method());
-
+		String topic = msg.getTopic();
+		storage.createTopic(topic);
 	}
 
 	public void onDeleteTopic(DeleteTopicMsg msg) {
@@ -124,7 +133,8 @@ public class Dispatcher extends Stopable {
 		// TODO: delete the topic from the broker storage
 		// the topic is contained in the delete topic message
 		
-		throw new UnsupportedOperationException(TODO.method());
+		String topic = msg.getTopic();
+		storage.deleteTopic(topic);
 	}
 
 	public void onSubscribe(SubscribeMsg msg) {
@@ -133,9 +143,10 @@ public class Dispatcher extends Stopable {
 
 		// TODO: subscribe user to the topic
 		// user and topic is contained in the subscribe message
-		
-		throw new UnsupportedOperationException(TODO.method());
 
+		String user = msg.getUser();
+		String topic = msg.getTopic();
+		storage.addSubscriber(user, topic);
 	}
 
 	public void onUnsubscribe(UnsubscribeMsg msg) {
@@ -145,7 +156,9 @@ public class Dispatcher extends Stopable {
 		// TODO: unsubscribe user to the topic
 		// user and topic is contained in the unsubscribe message
 		
-		throw new UnsupportedOperationException(TODO.method());
+		String user = msg.getUser();
+		String topic = msg.getTopic();
+		storage.removeSubscriber(user, topic);
 	}
 
 	public void onPublish(PublishMsg msg) {
@@ -155,8 +168,15 @@ public class Dispatcher extends Stopable {
 		// TODO: publish the message to clients subscribed to the topic
 		// topic and message is contained in the subscribe message
 		// messages must be sent used the corresponding client session objects
-		
-		throw new UnsupportedOperationException(TODO.method());
 
+		String topic = msg.getTopic();
+		Set<String> users = storage.getSubscribers(topic);
+		for (String u : users) {
+			if (!storage.clients.containsKey(u)) {
+				storage.addBufferMessage(u, msg); // task E, user is disconnected
+			} else {
+				storage.getSession(u).send(msg);
+			}
+		}
 	}
 }
