@@ -1,12 +1,7 @@
 package no.hvl.dat110.broker.tests;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import no.hvl.dat110.broker.Broker;
-import no.hvl.dat110.broker.BrokerServer;
-import no.hvl.dat110.broker.Dispatcher;
 import no.hvl.dat110.client.Client;
 
 public class Test4CreateDelete extends Test0Base {

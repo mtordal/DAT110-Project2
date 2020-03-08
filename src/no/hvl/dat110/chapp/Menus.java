@@ -1,7 +1,6 @@
 package no.hvl.dat110.chapp;
 
 import java.util.Optional;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

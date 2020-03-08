@@ -1,10 +1,7 @@
 package no.hvl.dat110.broker.tests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
-
 import no.hvl.dat110.client.Client;
 
 public class Test1ConnectDisconnect extends Test0Base {

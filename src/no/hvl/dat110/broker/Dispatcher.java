@@ -1,10 +1,7 @@
 package no.hvl.dat110.broker;
 
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.Collection;
-
-import no.hvl.dat110.common.TODO;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.common.Stopable;
 import no.hvl.dat110.messages.*;

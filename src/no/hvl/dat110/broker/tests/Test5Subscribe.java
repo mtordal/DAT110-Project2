@@ -1,9 +1,6 @@
 package no.hvl.dat110.broker.tests;
 
 import org.junit.Test;
-
-import no.hvl.dat110.broker.Broker;
-import no.hvl.dat110.broker.Dispatcher;
 import no.hvl.dat110.client.Client;
 
 public class Test5Subscribe extends Test0Base {
